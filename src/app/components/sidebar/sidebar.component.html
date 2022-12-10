@@ -1,0 +1,52 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      <img src="./assets/img/brand/Logo.svg" class="navbar-brand-img" alt="...">
+      <h2 class="">filerrrr.</h2>
+    </mat-toolbar>
+    <!-- Brand -->
+    <div class="navbar-menu-img">
+    <p>Main Menu</p>
+  </div>
+    <mat-nav-list class="navbar-list">
+      <a mat-list-item routerLink="/file-manager" [routerLinkActive]="['is-active']" >
+        <img src="./assets/img/icons/1.svg" class="navbar-link-icon">File manager
+      </a>
+      <a mat-list-item href="#" [routerLinkActive]="['is-active']"><img src="./assets/img/icons/2.svg" class="navbar-link-icon">Project</a>
+      <a mat-list-item href="#" [routerLinkActive]="['is-active']"><img src="./assets/img/icons/3.svg" class="navbar-link-icon">People & Teams</a>
+    </mat-nav-list>
+    <div class="navbar-menu-info">
+      <p>More informations</p>
+    </div>
+    <div class="navbar-menu-info">
+      <p>Preferences</p>
+    </div>
+    <mat-nav-list class="navbar-list">
+      <a mat-list-item  >
+        <img src="./assets/img/icons/4.svg" class="navbar-link-icon">Settings
+      </a>
+      <a mat-list-item href="#" ><img src="./assets/img/icons/5.svg" class="navbar-link-icon">Help & Center</a>
+      <a mat-list-item href="#" ><img src="./assets/img/icons/6.svg" class="navbar-link-icon">Dark Mode</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span><nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+          <!-- User -->
+          <div >
+            <ul class="navigation">
+              <li class="avatar"><input class="search-input"  placeholder="Search"></li>
+              <div class="avatar">
+              <li><img src="./assets/img/Image/Profil-picture/Profile-picture.jpg"  class="profileImage"></li>
+              <li><a href="#about">Alexis Audouin</a></li>
+              </div>
+            </ul>
+          </div>
+      </nav></span>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

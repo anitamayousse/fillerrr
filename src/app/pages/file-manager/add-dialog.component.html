@@ -1,0 +1,27 @@
+<div class="container-dialog">
+  <h3>Upload your files</h3>
+  <p>File should be Sketch,fig,psd...</p>
+</div>
+<div  class="container-drop" appDnd (fileDropped)="onFileDropped($event)" >
+  <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($any($event).target.files)" />
+  <img src="../../../assets/img/Image/Folder/Folder.png" alt=""/>
+  <p>Drag & Drop your files here</p>
+</div>
+<div class="files-list">
+  <p>Uploaded files</p>
+  <div class="single-file" *ngFor="let file of files; let i = index">
+    <img src="../../../assets/img/Image/Icon-application/Xd.png"  alt="file">
+    <div class="info">
+      <h4 class="name">
+        {{file?.name}}
+      </h4>
+      <p class="size">
+        {{ formatPercentage(file?.progress) }}
+      </p>
+    </div>
+    <app-progress [progress]="file?.progress"></app-progress>
+    <div class="open-close-container">
+      <button type="button" (click)="toggle()" [@openClose]="isOpen ? 'open' :  'closed'" class="">Done</button>
+    </div>
+  </div>
+</div>
